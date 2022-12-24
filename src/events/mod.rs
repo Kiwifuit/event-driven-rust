@@ -28,7 +28,7 @@ impl EventPublisher {
             .retain(|&l| l != listener);
     }
 
-    pub fn notify(&self, event: Event, path: PathBuf) {
+    pub fn notify(&self, event: Event, path: &PathBuf) {
         let subscribers = self.events.get(&event).unwrap();
 
         for subscriber in subscribers {
