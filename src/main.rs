@@ -45,5 +45,14 @@ impl EventFile {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let mut file = EventFile::new(PathBuf::from("./test.txt"));
+    let mut read_result = String::new();
+
+    file.on_read(|path| println!("Reading {}", path.display()));
+    file.on_write(|path| println!("Writing to {}", path.display()));
+
+    file.write(&String::from("Hello from an event-driven file handler!"));
+    file.read(&mut read_result);
+
+    println!("Read: {:?}", read_result);
 }
