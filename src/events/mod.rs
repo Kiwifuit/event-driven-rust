@@ -7,7 +7,6 @@ pub type EventListenerCallback = fn(file_path: PathBuf);
 pub enum Event {
     Save,
     Load,
-    Reload,
 }
 
 #[derive(Default)]
